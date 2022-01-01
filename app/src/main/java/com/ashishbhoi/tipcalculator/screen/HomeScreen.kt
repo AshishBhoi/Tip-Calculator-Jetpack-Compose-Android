@@ -5,10 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Slider
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Remove
@@ -31,9 +28,40 @@ import com.ashishbhoi.tipcalculator.ui.theme.TipCalculatorTheme
 import com.ashishbhoi.tipcalculator.util.totalPerPersonCalculator
 import com.ashishbhoi.tipcalculator.widgets.RoundIconButton
 
+
 @ExperimentalComposeUiApi
 @Composable
 fun HomeScreen() {
+    Scaffold(topBar = {
+        TopAppBar(
+            modifier = Modifier.fillMaxWidth(),
+            backgroundColor = MaterialTheme.colors.secondaryVariant
+        ) {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "Tip Calculator",
+                    style = MaterialTheme.typography.h6,
+                    fontWeight = FontWeight.SemiBold
+                )
+            }
+        }
+    }) {
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colors.background
+        ) {
+            HomeScreenContent()
+        }
+    }
+}
+
+
+@ExperimentalComposeUiApi
+@Composable
+fun HomeScreenContent() {
     val splitNumberState = remember {
         mutableStateOf(1)
     }
@@ -68,14 +96,17 @@ fun TopHeader(totalPerPerson: Double = 0.0) {
             .fillMaxWidth()
             .height(150.dp)
             .clip(shape = RoundedCornerShape(corner = CornerSize(12.dp))),
-        color = MaterialTheme.colors.secondaryVariant
+        color = MaterialTheme.colors.secondary
     ) {
         Column(
             modifier = Modifier.padding(12.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "Total per Person", style = MaterialTheme.typography.h6)
+            Text(
+                text = "Total per Person",
+                style = MaterialTheme.typography.h6
+            )
             Text(
                 text = "$$total",
                 style = MaterialTheme.typography.h4,
