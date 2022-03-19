@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
-import com.ashishbhoi.tipcalculator.screen.HomeScreen
+import com.ashishbhoi.tipcalculator.screen.home.HomeScreen
 import com.ashishbhoi.tipcalculator.ui.theme.TipCalculatorTheme
 
 @ExperimentalComposeUiApi
